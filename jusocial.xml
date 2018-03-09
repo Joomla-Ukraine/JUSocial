@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system">
+	<name>JUSocial embed</name>
+	<author>Joomla! Ukraine</author>
+	<creationDate>09.03.2018</creationDate>
+	<copyright>Copyright (C) 2017-2018 Joomla! Ukraine. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>denys@joomla-ua.org</authorEmail>
+	<authorUrl>https://joomla-ua.org</authorUrl>
+	<version>1.0</version>
+	<description></description>
+	<files>
+		<filename plugin="jusocial">jusocial.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>
