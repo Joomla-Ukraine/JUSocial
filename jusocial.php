@@ -29,7 +29,7 @@ class plgSystemJUSocial extends JPlugin
 	 *
 	 * @return bool
 	 *
-	 * @since version
+	 * @since 1.0
 	 */
 	public function onAfterRender()
 	{
@@ -87,28 +87,31 @@ class plgSystemJUSocial extends JPlugin
 		return true;
 	}
 
+	/**
+	 * @param $template
+	 *
+	 * @return string
+	 *
+	 * @since 1.0
+	 */
 	protected static function _getTmpl($template)
 	{
 		$search = JPATH_SITE . '/templates/' . $template . '/html/plg_jusocial/jusocial.php';
+		$tmpl   = JPATH_SITE . '/plugins/system/jusocial/tmpl/jusocial.php';
 
 		if(is_file($search))
 		{
 			$tmpl = $search;
-		}
-		else
-		{
-			$tmpl = JPATH_SITE . '/plugins/system/plg_jusocial/tmpl/jusocial.php';
 		}
 
 		return $tmpl;
 	}
 
 	/**
-	 * Check the buffer.
+	 * @param $buffer
 	 *
-	 * @param   string $buffer Buffer to be checked.
 	 *
-	 * @return  void
+	 * @since 1.0
 	 */
 	private function checkBuffer($buffer)
 	{
