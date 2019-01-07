@@ -59,13 +59,7 @@ class plgSystemJUSocial extends CMSPlugin
 			{
 				$social = htmlspecialchars_decode($match[ 1 ][ $i ]);
 
-				$tmpl = self::_getTmpl($template);
-
-				ob_start();
-				require $tmpl;
-				$post = ob_get_contents();
-				ob_end_clean();
-
+				$post   = self::_getTmpl($template, [ 'social' => $social ]);
 				$buffer = preg_replace($regex, $post, $buffer, 1);
 
 				$i++;
@@ -81,7 +75,6 @@ class plgSystemJUSocial extends CMSPlugin
 		}
 
 		$this->checkBuffer($buffer);
-
 		$this->app->setBody($buffer);
 
 		return true;
@@ -94,17 +87,38 @@ class plgSystemJUSocial extends CMSPlugin
 	 *
 	 * @since 1.0
 	 */
-	protected static function _getTmpl($template)
+	protected static function _getTmpl($template, array $variables = [])
 	{
 		$search = JPATH_SITE . '/templates/' . $template . '/html/plg_jusocial/jusocial.php';
 		$tmpl   = JPATH_SITE . '/plugins/system/jusocial/tmpl/jusocial.php';
 
-		if(is_file($search))
+		if( is_file($search) )
 		{
-			$tmpl = $search;
+			return self::_renderTmpl($search, $variables);
 		}
 
-		return $tmpl;
+		return self::_renderTmpl($tmpl, $variables);
+	}
+
+	/**
+	 * @param $template
+	 * @param $variables
+	 *
+	 * @return false|string
+	 *
+	 * @since 1.0
+	 */
+	protected static function _renderTmpl($template, $variables)
+	{
+		ob_start();
+		foreach( \func_get_args()[ 1 ] as $key => $value )
+		{
+			${$key} = $value;
+		}
+
+		require \func_get_args()[ 0 ];
+
+		return ob_get_clean();
 	}
 
 	/**
