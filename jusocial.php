@@ -17,12 +17,6 @@ use Joomla\CMS\Plugin\CMSPlugin;
 
 class plgSystemJUSocial extends CMSPlugin
 {
-	/**
-	 * Application object.
-	 *
-	 * @var    JApplicationCms
-	 * @since  3.5
-	 */
 	protected $app;
 
 	/**
@@ -33,14 +27,14 @@ class plgSystemJUSocial extends CMSPlugin
 	 */
 	public function onAfterRender()
 	{
-		if(!$this->app->isClient('site'))
+		if( !$this->app->isClient('site') )
 		{
 			return true;
 		}
 
 		$uri = explode('/', $_SERVER[ 'REQUEST_URI' ]);
 
-		if($uri[ 1 ] == 'account')
+		if( $uri[ 1 ] === 'account' )
 		{
 			return true;
 		}
@@ -52,13 +46,13 @@ class plgSystemJUSocial extends CMSPlugin
 		$buffer = preg_replace('!<(?:code|pre|textarea|script).*?>.*?</(?:code|pre|textarea|script)>!si', '#pre#', $buffer);
 
 		$regex = '#\[socpost\](.*?)\[/socpost\]#m';
-		if(preg_match_all($regex, $buffer, $match))
+
+		if( preg_match_all($regex, $buffer, $match) )
 		{
 			$i = 0;
-			foreach($match[ 0 ] as $row)
+			foreach( $match[ 0 ] as $row )
 			{
 				$social = htmlspecialchars_decode($match[ 1 ][ $i ]);
-
 				$post   = self::_getTmpl($template, [ 'social' => $social ]);
 				$buffer = preg_replace($regex, $post, $buffer, 1);
 
@@ -66,9 +60,9 @@ class plgSystemJUSocial extends CMSPlugin
 			}
 		}
 
-		if(!empty($pre[ 0 ]))
+		if( !empty($pre[ 0 ]) )
 		{
-			foreach($pre[ 0 ] as $tag)
+			foreach( $pre[ 0 ] as $tag )
 			{
 				$buffer = preg_replace('!#pre#!', $tag, $buffer, 1);
 			}
@@ -129,9 +123,9 @@ class plgSystemJUSocial extends CMSPlugin
 	 */
 	private function checkBuffer($buffer)
 	{
-		if($buffer === null)
+		if( $buffer === null )
 		{
-			switch(preg_last_error())
+			switch( preg_last_error() )
 			{
 				case PREG_BACKTRACK_LIMIT_ERROR:
 					$message = 'PHP regular expression limit reached (pcre.backtrack_limit)';
