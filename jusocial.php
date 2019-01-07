@@ -13,9 +13,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.plugin.plugin');
+use Joomla\CMS\Plugin\CMSPlugin;
 
-class plgSystemJUSocial extends JPlugin
+class plgSystemJUSocial extends CMSPlugin
 {
 	/**
 	 * Application object.
