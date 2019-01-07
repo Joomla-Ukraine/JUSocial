@@ -2,12 +2,12 @@
 <extension version="3.8" type="plugin" group="system" method="upgrade">
 	<name>JUSocial embed</name>
 	<author>Joomla! Ukraine</author>
-	<creationDate>09.03.2018</creationDate>
+	<creationDate>07.01.2019</creationDate>
 	<copyright>Copyright (C) 2017-2019 Joomla! Ukraine. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>denys@joomla-ua.org</authorEmail>
 	<authorUrl>https://joomla-ua.org</authorUrl>
-	<version>1.0</version>
+	<version>1.1</version>
 	<description></description>
 	<files>
 		<folder>tmpl</folder>
