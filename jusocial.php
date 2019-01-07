@@ -6,7 +6,7 @@
  * @subpackage       plg_jusocial
  *
  * @author           Denys Nosov, denys@joomla-ua.org
- * @copyright        2017-2018 (C) Joomla! Ukraine, https://joomla-ua.org. All rights reserved.
+ * @copyright        2017-2019 (C) Joomla! Ukraine, https://joomla-ua.org. All rights reserved.
  * @license          GNU General Public License version 2 or later; see LICENSE.txt
  */
 
